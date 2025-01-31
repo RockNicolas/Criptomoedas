@@ -1,5 +1,5 @@
 import styles from './header.module.css'
-import logimg from '../../assets/logo.svg'
+import logimg from '../../assets/logo 2.jpg'
 import { Link } from 'react-router-dom'
 
 export function Header(){
