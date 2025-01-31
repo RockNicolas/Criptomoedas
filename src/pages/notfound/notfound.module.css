@@ -1,5 +1,4 @@
-
-.notfound-container {
+.notfoundContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,9 +6,9 @@
     background: #f7f7f7;
     margin: 0;
     font-family: 'Arial', sans-serif;
-  }
+}
   
-.notfound-content {
+.notfoundContent {
     text-align: center;
     padding: 40px;
     background-color: #fff;
@@ -19,7 +18,7 @@
     width: 90%;
 }
   
-.notfound-title {
+.notfoundTitle {
     font-size: 100px;
     font-weight: bold;
     color: #f44336;
@@ -27,7 +26,7 @@
     animation: fadeIn 1s ease-out;
 }
 
-.notfound-subtitle {
+.notfoundSubtitle {
     font-size: 1.5rem;
     color: #333;
     margin-top: 20px;
@@ -35,14 +34,14 @@
     animation: fadeIn 1.5s ease-out;
 }
   
-.notfound-text {
+.notfoundText {
     font-size: 1rem;
     color: #555;
     margin: 20px 0;
     animation: fadeIn 2s ease-out;
 }
 
-.notfound-link {
+.notfoundLink {
     font-size: 1.2rem;
     text-decoration: none;
     color: #007bff;
@@ -53,7 +52,7 @@
     border-radius: 30px;
 }
   
-.notfound-link:hover {
+.notfoundLink:hover {
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
@@ -69,4 +68,3 @@
       transform: translateY(0);
     }
 }
-  
