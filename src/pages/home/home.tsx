@@ -16,6 +16,9 @@ interface CoinProps{
     marketCapUsd: string;
     volumeUsd24Hr:string;
     explorer: string;
+    formatedPrice?: string;
+    formatedMarket?: string;
+    formatedVolume?:string;
 }
 
 interface DataProps{
@@ -42,17 +45,24 @@ export function Home() {
                 currency: "USD"
             })
 
+            const priceCompact = Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+                notation: "compact"
+            })
+
             const formatedResult = coinsData.map((item) => {
                 const formated = {
                     ...item,
                     formatedPrice: price.format(Number(item.priceUsd)),
-                    formatedMarket: price.format(Number(item.marketCapUsd))
+                    formatedMarket: priceCompact.format(Number(item.marketCapUsd)),
+                    formatedVolume: priceCompact.format(Number(item.volumeUsd24Hr))
                 }
 
                 return formated;
             })
 
-            console.log(formatedResult);
+            setCoins(formatedResult);
         })
     }
 
@@ -93,31 +103,39 @@ export function Home() {
                 </tr>
             </thead>
             <tbody id='tbody'>
-                <tr className={styles.tr}>
+    
+            {coins.length > 0 && coins.map((item) => (
+                <tr className={styles.tr} key={item.id}>
                     <td className={styles.tdLabel} data-Label="Moeda">
-                       <div className={styles.name}>
-                        <Link to={"/detail/bitcoin"}>
-                                <span>Bitcoin</span> | BTC
+                        <div className={styles.name}>
+                            <img
+                                alt='Logo Cripto'
+                                src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`}
+                            />
+                            <Link to={`/detail/${item.id}`}>
+                                <span>{item.name}</span> | {item.symbol}
                             </Link> 
-                       </div>
+                        </div>
                     </td>
 
                     <td className={styles.tdLabel} data-Label="Valor Mercado">
-                        1T
+                        {item.formatedMarket}
                     </td>
 
                     <td className={styles.tdLabel} data-Label="Preço">
-                        8.000
+                        {item.formatedPrice}
                     </td>
 
                     <td className={styles.tdLabel} data-Label="Volume">
-                        2B
+                        {item.formatedVolume}
                     </td>
 
-                    <td className={styles.tdProfit} data-Label="Moudança 24h">
-                       <span>1.20</span>
+                    <td className={Number(item.changePercent24Hr) > 0 ? styles.tdProfit : styles.tdLoss}
+                     data-Label="Moudança 24h">
+                        <span>{Number(item.changePercent24Hr).toFixed(3) }</span>
                     </td>
-                </tr>
+                </tr>   
+            ))}
             </tbody>
         </table>
 
