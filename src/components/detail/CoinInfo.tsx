@@ -1,4 +1,3 @@
-// components/detail/CoinInfo.tsx
 import styles from '../../pages/detail/detail.module.css';
 import { CoinLogo } from './CoinLogo';
 

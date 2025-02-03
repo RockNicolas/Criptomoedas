@@ -1,4 +1,3 @@
-// pages/home/Home.tsx
 import { useState, useEffect, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './home.module.css';

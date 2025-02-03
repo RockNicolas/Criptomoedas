@@ -1,4 +1,3 @@
-// hooks/useCoins.ts
 import { useState, useEffect } from 'react';
 import { CoinProps, DataProps } from '../types/index';
 

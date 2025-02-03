@@ -1,4 +1,3 @@
-
 export interface CoinProps {
     id: string;
     name: string;

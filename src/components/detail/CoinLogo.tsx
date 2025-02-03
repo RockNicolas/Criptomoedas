@@ -1,4 +1,3 @@
-// components/detail/CoinLogo.tsx
 import styles from '../../pages/detail/detail.module.css';
 
 interface CoinLogoProps {

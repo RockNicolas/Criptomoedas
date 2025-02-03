@@ -1,4 +1,3 @@
-// components/detail/MarketData.tsx
 import styles from '../../pages/detail/detail.module.css';
 
 interface MarketDataProps {

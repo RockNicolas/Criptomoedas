@@ -1,4 +1,3 @@
-// pages/detail/Detail.tsx
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CoinProps } from '../../types/index';
