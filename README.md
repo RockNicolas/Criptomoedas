@@ -54,7 +54,7 @@ Contribuições são sempre bem-vindas! Se você tiver alguma sugestão, ideia o
 
 ![GIF do projeto](/public/mostrar.png)
 
-## MOSTRAR MAIS EM CONTA
+## BARRA DE PESQUISA
 
 - O funcionamento da Seacht quando o usuário for pesquisar com apenas algumas letras, como 'bit', e logo em seguida aparecer 'bitcoin', desenvolva esse componente para facilitar o sistema para o usuário.
  
