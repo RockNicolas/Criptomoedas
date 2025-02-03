@@ -20,7 +20,7 @@ Este projeto é um sistema de monitoramento do mercado de criptomoedas desenvolv
 
 ## Instalação
 
-1. Clone este repositório: `git clone https://github.com/seu-usuario/nome-do-projeto.git`
+1. Clone este 
 2. Instale as dependências: `npm install` ou `yarn install`
 3. Instale as Biliotecas: `Vite: npm install vite --save-dev` ,  `React Router: npm install react-router-dom`, `React-icon: npm install react-icons`
 3. Inicie o servidor de desenvolvimento: `npm run dev` ou `yarn runstart`
