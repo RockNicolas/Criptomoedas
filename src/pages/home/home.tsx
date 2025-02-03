@@ -38,15 +38,19 @@ export function Home() {
     }, [offset])
 
     useEffect(() => {
+        let filtered = coins.filter(
+            (coin) =>
+              coin.name.toLowerCase().includes(input.toLowerCase()) ||
+              coin.symbol.toLowerCase().includes(input.toLowerCase())
+        );
+    
         if (sortByCheapest) {
-            const sortedCoins = [...filteredCoins].sort((a, b) =>
+            filtered = [...filtered].sort((a, b) =>
                 parseFloat(a.priceUsd) - parseFloat(b.priceUsd)
             );
-            setFilteredCoins(sortedCoins);
-        } else {
-            setFilteredCoins(coins);
         }
-    }, [sortByCheapest, coins, filteredCoins]);
+        setFilteredCoins(filtered); 
+    }, [input, sortByCheapest, coins]);
 
     async function getData(){
     fetch(`https://api.coincap.io/v2/assets?limit=10&offset=${offset}`)
