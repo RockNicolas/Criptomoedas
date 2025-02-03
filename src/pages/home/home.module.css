@@ -83,6 +83,35 @@ table td{
     border-radius: 8px;
 }
 
+.sortOptions {
+    display: flex;
+    margin: 20px 0;
+}
+
+.sortOptions button {
+    background-color: #30beff;
+    padding: 8px 24px; 
+    color: #fff;
+    margin: 14px 0; 
+    border-radius: 8px; 
+    border: none; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+}
+
+.sortOptions button:hover {
+    background-color: #1a98d4; 
+}
+
+.sortOptions .cheapestActive {
+    background-color: #4caf50; 
+}
+
+.sortOptions .cheapestActive:hover {
+    background-color: #45a049;
+}
+
 .Logo{
     width: 20px;
     height: 20px;

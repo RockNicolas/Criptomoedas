@@ -29,12 +29,24 @@ export function Home() {
     const [input, setInput] = useState("")
     const [coins, setCoins] = useState<CoinProps[]>([]);
     const [filteredCoins, setFilteredCoins] = useState<CoinProps[]>([]); 
+    const [sortByCheapest, setSortByCheapest] = useState(false);
     const [offset, setOffset] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
         getData();
     }, [offset])
+
+    useEffect(() => {
+        if (sortByCheapest) {
+            const sortedCoins = [...filteredCoins].sort((a, b) =>
+                parseFloat(a.priceUsd) - parseFloat(b.priceUsd)
+            );
+            setFilteredCoins(sortedCoins);
+        } else {
+            setFilteredCoins(coins);
+        }
+    }, [sortByCheapest, coins, filteredCoins]);
 
     async function getData(){
     fetch(`https://api.coincap.io/v2/assets?limit=10&offset=${offset}`)
@@ -96,6 +108,10 @@ export function Home() {
         setOffset(offset + 10); 
     }
 
+    function toggleSortByCheapest() {
+        setSortByCheapest(!sortByCheapest); 
+    }
+
     return (
       <main className={styles.container}>
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -110,6 +126,12 @@ export function Home() {
                 <BsSearch size={30} color='#FFF'/>
             </button>
         </form>
+
+        <div className={styles.sortOptions}>
+            <button onClick={toggleSortByCheapest}>
+                {sortByCheapest ? "Mostrar todas" : "Mostrar mais em conta"}
+            </button>
+        </div>
 
         <table>
             <thead>
