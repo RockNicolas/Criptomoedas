@@ -28,6 +28,7 @@ interface DataProps{
 export function Home() {
     const [input, setInput] = useState("")
     const [coins, setCoins] = useState<CoinProps[]>([]);
+    const [filteredCoins, setFilteredCoins] = useState<CoinProps[]>([]); 
     const [offset, setOffset] = useState(0);
     const navigate = useNavigate();
 
@@ -63,9 +64,24 @@ export function Home() {
                 return formated;
             })
             
-            const listCoins = [...coins, ...formatedResult]
-            setCoins(listCoins);
+            setCoins(formatedResult);
+            setFilteredCoins(formatedResult)
         })
+    }
+
+    function handleSearch(inputValue: string) {
+        setInput(inputValue); 
+    
+        if (inputValue === '') {
+          setFilteredCoins(coins); 
+        } else {
+          const filtered = coins.filter(
+            (coin) =>
+              coin.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+              coin.symbol.toLowerCase().includes(inputValue.toLowerCase())
+          );
+          setFilteredCoins(filtered); 
+        }
     }
 
     function handleSubmit(e: FormEvent){
@@ -76,13 +92,8 @@ export function Home() {
         navigate(`/detail/${input}`)
     }
 
-    function handdleGetMore(){
-       if(offset === 0){
-        setOffset(10)
-        return;
-       }
-
-       setOffset(offset + 10)
+    function handleGetMore() {
+        setOffset(offset + 10); 
     }
 
     return (
@@ -90,9 +101,10 @@ export function Home() {
         <form className={styles.form} onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Digite o noem da moeda... Ex Bitcoin"
+              placeholder="Digite o nome da moeda... Ex Bitcoin"
               value={input}
-              onChange={(e) => setInput(e.target.value) }
+              onChange={(e) => 
+                handleSearch(e.target.value)}
             />
             <button type="submit">
                 <BsSearch size={30} color='#FFF'/>
@@ -111,42 +123,47 @@ export function Home() {
             </thead>
             <tbody id='tbody'>
     
-            {coins.length > 0 && coins.map((item) => (
-                <tr className={styles.tr} key={item.id}>
-                    <td className={styles.tdLabel} data-Label="Moeda">
-                        <div className={styles.name}>
-                            <img
-                                alt='Logo Cripto'
-                                src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`}
-                            />
-                            <Link to={`/detail/${item.id}`}>
-                                <span>{item.name}</span> | {item.symbol}
-                            </Link> 
-                        </div>
-                    </td>
+            {filteredCoins.length > 0 &&
+             filteredCoins.map((item) => (
+              <tr className={styles.tr} key={item.id}>
+                <td className={styles.tdLabel} data-Label="Moeda">
+                  <div className={styles.name}>
+                    <img
+                      alt="Logo Cripto"
+                      src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`}
+                    />
+                    <Link to={`/detail/${item.id}`}>
+                      <span>{item.name}</span> | {item.symbol}
+                    </Link>
+                  </div>
+                </td>
 
-                    <td className={styles.tdLabel} data-Label="Valor Mercado">
-                        {item.formatedMarket}
-                    </td>
+                <td className={styles.tdLabel} data-Label="Valor Mercado">
+                  {item.formatedMarket}
+                </td>
 
-                    <td className={styles.tdLabel} data-Label="Preço">
-                        {item.formatedPrice}
-                    </td>
+                <td className={styles.tdLabel} data-Label="Preço">
+                  {item.formatedPrice}
+                </td>
 
-                    <td className={styles.tdLabel} data-Label="Volume">
-                        {item.formatedVolume}
-                    </td>
+                <td className={styles.tdLabel} data-Label="Volume">
+                  {item.formatedVolume}
+                </td>
 
-                    <td className={Number(item.changePercent24Hr) > 0 ? styles.tdProfit : styles.tdLoss}
-                     data-Label="Moudança 24h">
-                        <span>{Number(item.changePercent24Hr).toFixed(3) }</span>
-                    </td>
-                </tr>   
+                <td
+                  className={
+                    Number(item.changePercent24Hr) > 0 ? styles.tdProfit : styles.tdLoss
+                  }
+                  data-Label="Mudança 24h"
+                >
+                  <span>{Number(item.changePercent24Hr).toFixed(3)}</span>
+                </td>
+              </tr>
             ))}
             </tbody>
         </table>
 
-        <button className={styles.buttonMore} onClick={handdleGetMore}>
+        <button className={styles.buttonMore} onClick={handleGetMore}>
             Carregar mais
         </button>
       </main>
