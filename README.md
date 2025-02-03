@@ -25,17 +25,6 @@ Este projeto é um sistema de monitoramento do mercado de criptomoedas desenvolv
 3. Instale as Biliotecas: `Vite: npm install vite --save-dev` ,  `React Router: npm install react-router-dom`, `React-icon: npm install react-icons`
 3. Inicie o servidor de desenvolvimento: `npm run dev` ou `yarn runstart`
 
-
-## Contribuição
-
-Contribuições são sempre bem-vindas! Se você tiver alguma sugestão, ideia ou encontrar algum problema, por favor, abra uma issue ou envie um pull request.
-
-
-## Agradecimentos
-
-- Aos desenvolvedores das bibliotecas e ferramentas utilizadas neste projeto.
-- À comunidade de desenvolvedores que compartilham conhecimento e recursos online.
-
 ## HOME
 
 - Na página inicial, o usuário encontra uma interface simples e intuitiva. Com a barra de pesquisa, é possível encontrar rapidamente a criptomoeda desejada. O botão "Moedas em Conta" permite verificar quais criptomoedas estão com preços mais acessíveis no momento. Ao rolar a página para baixo, o usuário pode clicar no botão "Carregar Mais" para exibir uma lista expandida de criptomoedas, facilitando a visualização e a comparação entre diferentes opções.
@@ -65,4 +54,14 @@ Contribuições são sempre bem-vindas! Se você tiver alguma sugestão, ideia o
 - Assim que o usuário clica na sua cripto escolhida, ele será redirecionado para outra página que explica de forma mais simples sobre a moeda, como o nome dela, sua sigla, preço, mercado, volume e mudança em 24h.
  
 ![GIF do projeto](/public/detail.png)
+
+## Contribuição
+
+Contribuições são sempre bem-vindas! Se você tiver alguma sugestão, ideia ou encontrar algum problema, por favor, abra uma issue ou envie um pull request.
+
+
+## Agradecimentos
+
+- Aos desenvolvedores das bibliotecas e ferramentas utilizadas neste projeto.
+- À comunidade de desenvolvedores que compartilham conhecimento e recursos online.
 
